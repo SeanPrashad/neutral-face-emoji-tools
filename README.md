@@ -1,38 +1,30 @@
-## Neutral Face Emoji Tools
+## Respectful Neutral Face Emoji Tool
 
-Drag and drop all your emoji.
-
-![Demo GIF](demo.gif)
-
------
+This modified version of
+[neutral-face-emoji-tools](https://github.com/Fauntleroy/neutral-face-emoji-tools)
+respects the [rate limits imposed by
+Slack](https://api.slack.com/docs/rate-limits#overview), allowing you to queue
+hundreds of upload!
 
 ### Installation
 
-This extension is installed through the Chrome Web Store: https://chrome.google.com/webstore/detail/slack-emoji-tools/anchoacphlfbdomdlomnbbfhcmcdmjej
+We will need to manually build and add the Chrome extension since the [official
+version](https://chrome.google.com/webstore/detail/neutral-face-emoji-tools/anchoacphlfbdomdlomnbbfhcmcdmjej) does not respect rate limiting.
 
------
+1. Install [nvm (Node version
+   manager)](https://github.com/nvm-sh/nvm#node-version-manager---)
+1. `cd` into the local repo and run `nvm use` to change your Node version to
+   `10.16.0` as the [current version of gulp will not work with higher versions
+   of
+   Node](https://stackoverflow.com/questions/55921442/how-to-fix-referenceerror-primordials-is-not-defined-in-node)
+1. Run `npm install` to download dependencies (ignore the security warnings)
+1. Run `npm run build` which will produce a `/dist` folder containing all of the
+   files to upload to Chrome
+1. Open Chrome and browse to `chrome://extensions/`
+1. Click on `Load unpacked` and navigate and select the `/dist` folder on your
+   local file system
+1. You are now ready to upload emoji by navigating to `mySlackWorkspaceURL/customize/emoji`, where `mySlackWorkspaceURL` is the URL of
+   your Slack workspace!
 
-### Usage
-
-To use this extension, simply navigate to the /customize/emoji page of your Slack. There should be a new section called "Bulk Emoji Uploader" under the "💁 Emoji" tab. Once there, just drag and drop the images you want into the drop zone.
-
-**Note: Make sure your files are named appropriately before uploading them!**
-
------
-
-### Developing
-
-To work on this extension you'll need [Node.js](https://nodejs.org) and [NPM](https://www.npmjs.com/) installed.
-
-#### Running the extension in dev mode
-
-Follow these steps to get your dev workflow in order:
-
-- Clone this repository
-- Install the dev scripts with `npm install`
-- Run `npm run build` to build the distributable files
-- Go to [chrome://extensions](chrome://extensions) in Google Chrome
-- Click "Load unpacked extension..." (*make sure "Developer Mode" is checked*)
-- Select the `dist/` directory in your Neutral Face Emoji Tools repo
-
-Once you've done all these things, the extension should appear in your extensions list. If you want to actively work on the extension, run `npm run dev`—this will watch the `src/` directory for changes and update the contents of `dist/` automatically. You will then need to go to the [chrome://extensions/](chrome://extensions) page, manually reload the extension, and refresh the page.
+**Note**: Run `nvm use system` when you no longer need to keep your version of Node
+set to `10.16.0`
