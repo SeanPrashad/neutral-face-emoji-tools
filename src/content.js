@@ -5,7 +5,7 @@ import CSSLoaded from './styles/content.less';
 
 import uploadEmoji from './upload-emoji';
 
-const ELEMENT_TO_INSERT_BEFORE_SELECTOR = '.p-customize_emoji_wrapper';
+const ELEMENT_TO_INSERT_BEFORE_SELECTOR = '.p-customize_emoji_wrapper__container';
 const SET_ICON_URL = chrome.runtime.getURL('images/icon_128.png');
 
 function createUploadElement (upload) {
